@@ -1,0 +1,9 @@
+{
+  "contract_name": "public_safe_temporal_gate",
+  "contract_version": "1.0",
+  "required_conditions": {
+    "all_predictor_availability_dates_known": true,
+    "all_predictors_available_by_event_date": false
+  },
+  "expected_gate_result": "BLOCKED_UNRESOLVED"
+}

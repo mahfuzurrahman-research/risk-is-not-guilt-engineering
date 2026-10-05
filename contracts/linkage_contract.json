@@ -1,0 +1,26 @@
+{
+  "contract_name": "public_safe_synthetic_linkage",
+  "contract_version": "1.0",
+  "required_columns": [
+    "record_id",
+    "entity_alias",
+    "link_basis",
+    "publication_flag",
+    "workflow_status",
+    "available_date",
+    "event_date"
+  ],
+  "allowed_link_basis": [
+    "DIRECT_KEY",
+    "PROCESS_ONLY"
+  ],
+  "allowed_publication_flags": [
+    "0",
+    "1"
+  ],
+  "rules": {
+    "DIRECT_KEY_requires_entity_alias": true,
+    "PROCESS_ONLY_may_omit_entity_alias": true,
+    "workflow_status_nonempty": true
+  }
+}
