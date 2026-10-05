@@ -2,7 +2,7 @@
 
 ## Supported repository wording
 
-Built a synthetic advertising-integrity risk workflow with logistic-regression/random-forest comparison, Isolation Forest anomaly scoring, availability-aware temporal holdouts, and a capacity-bounded, label-free investigation queue; validated scoring-policy persistence and failure handling through automated tests and CI.
+Built a synthetic advertising-integrity risk workflow with logistic-regression/random-forest comparison, Isolation Forest anomaly scoring, availability-aware temporal holdouts, and a capacity-bounded, label-free investigation queue; validated scoring-policy persistence and failure handling through automated tests; added GitHub Actions and Docker execution paths.
 
 Docker reproducibility may be included once the container build and execution checks on this commit are successful. The workflow contains those checks; their presence alone is not execution evidence.
 
