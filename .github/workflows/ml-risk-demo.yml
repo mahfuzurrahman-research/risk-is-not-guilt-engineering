@@ -1,0 +1,33 @@
+name: Synthetic ML risk validation
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+          cache-dependency-path: requirements-ml.txt
+      - name: Install pinned dependencies
+        run: python -m pip install -r requirements-ml.txt
+      - name: Run both modules and verify artifacts
+        run: ./run_all_demos.sh
+      - name: Build ML container
+        run: docker build -f Dockerfile.ml -t risk-is-not-guilt-ml-demo .
+      - name: Run ML container
+        run: docker run --rm risk-is-not-guilt-ml-demo
+      - name: Retain synthetic validation evidence
+        uses: actions/upload-artifact@v4
+        with:
+          name: synthetic-ml-risk-evidence
+          path: outputs/ml_demo/
+          retention-days: 7

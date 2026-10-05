@@ -1,0 +1,39 @@
+{
+  "contract_name": "synthetic_advertising_integrity_ml_demo",
+  "contract_version": "2.0",
+  "synthetic_only": true,
+  "uses_google_ads_data": false,
+  "uses_real_fraud_labels": false,
+  "commercial_production_deployment": false,
+  "scientific_claims_extended": false,
+  "purpose": "Fabricated risk classification, anomaly detection, and human-review prioritization.",
+  "target": "abuse_label",
+  "target_meaning": "Noisy simulator outcome; not observed fraud or legal guilt.",
+  "features": [
+    "account_age_days",
+    "click_through_rate",
+    "conversion_rate",
+    "device_count_24h",
+    "ip_count_24h",
+    "geo_velocity_kmh",
+    "repeat_click_ratio",
+    "night_activity_share",
+    "payment_failures_30d",
+    "burst_index"
+  ],
+  "feature_policy": "Numeric finite non-negative features; rates in [0,1]; counts integral; no identifiers, dates, or labels in model inputs.",
+  "temporal_policy": "Features available by decision; training labels available before validation; validation labels available before test.",
+  "queue_policy": "Label-free, deterministic, capacity-bounded human-review queue; no automated adverse action.",
+  "required_outputs": [
+    "synthetic_ad_integrity_events.csv",
+    "dataset_summary.json",
+    "validation_metrics.json",
+    "test_metrics.json",
+    "queue_evaluation.json",
+    "scored_events.csv",
+    "investigation_queue.csv",
+    "model_bundle.joblib",
+    "model_manifest.json",
+    "model_card.md"
+  ]
+}
