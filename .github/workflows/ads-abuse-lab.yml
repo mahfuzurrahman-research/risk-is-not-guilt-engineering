@@ -1,0 +1,34 @@
+name: Ads destination investigation validation
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Capture, investigate, reconstruct and test controlled evidence
+        run: ./run_ads_lab.sh
+      - name: Build Ads lab container
+        run: docker build -f Dockerfile.ads -t ads-destination-investigation-lab .
+      - name: Run Ads lab container
+        run: docker run --rm ads-destination-investigation-lab
+      - name: Retain controlled investigation evidence
+        uses: actions/upload-artifact@v4
+        with:
+          name: ads-destination-investigation-evidence
+          path: |
+            outputs/ads_lab/
+            outputs/ads_lab_summary.json
+            outputs/ads_capture.json
+            outputs/ads_inspection.json
+          retention-days: 7

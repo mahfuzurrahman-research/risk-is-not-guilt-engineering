@@ -27,3 +27,14 @@
 | Model persistence | Complete model/policy bundle and exact replay check |
 | Artifact integrity | Dependency/source hashes, success receipt, SHA-256 verifier |
 | Failure handling | Invalid features/keys, future availability, unmet threshold target, interrupted build, writer lock |
+
+| Ads investigation capability | Public evidence |
+|---|---|
+| HTTP evidence capture | Owned server, bounded responses, explicit redirect chains, body hashes, three contexts |
+| Destination signals | Product mismatch, contextual forms/downloads, legitimate variation controls |
+| Threat metadata | PhishTank/URLhaus local import, retrieval-time admission, expiry, unknown status |
+| Campaign association | Shared endpoints/references/templates with unresolved actor identity |
+| Investigation cases | Capacity limits, evidence reasons, policy references and alternative explanations |
+| Incident exercise | Controlled root-cause hypothesis, patched evidence and exact score replay |
+| Independent validation | Thirty-five SQLite gates plus raw-input/schema/table reconstruction |
+| Reports and automation | JSON/Markdown/HTML evidence, dedicated CI and standard-library Docker image |

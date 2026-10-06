@@ -16,6 +16,8 @@ docker build -t risk-is-not-guilt-engineering .
 docker run --rm risk-is-not-guilt-engineering
 docker build -f Dockerfile.ml -t risk-is-not-guilt-ml-demo .
 docker run --rm risk-is-not-guilt-ml-demo
+docker build -f Dockerfile.ads -t ads-destination-investigation-lab .
+docker run --rm ads-destination-investigation-lab
 ```
 
 ## ML artifacts
@@ -32,4 +34,10 @@ The bundle stores all estimators and scoring-policy metadata. Persistence replay
 
 Generated artifacts, environments, and caches are excluded from Git and from the source-only public boundary scan. This scan is an additional hygiene check, not proof that arbitrary external files are safe. The ML entrypoint generates its inputs internally and accepts no external data path.
 
-Run the combined command in the order shown: the original linkage runner clears generated outputs before creating its reports.
+The original linkage runner regenerates only its own four output files, preserving completed ML and Ads lab runs.
+
+## Ads investigation artifacts
+
+`./run_ads_lab.sh` uses the standard library only. `python3 -m ads_lab verify` validates the exact artifact inventory, all SHA-256 hashes, current source hashes, complete raw-evidence decision replay and independently rebuilt SQLite schema/table contents. The generated manifest identifies the simulation scope and the repeated scenario designs.
+
+The runner also captures owned HTTP cases and verifies `outputs/ads_inspection.json`. This inspection stores all raw inputs and source hashes; no label-based metrics are invented for that capture batch. The [Ads lab design](ads_abuse_lab.md) describes indicator imports, time semantics, rollback and the limits of static HTML inspection.

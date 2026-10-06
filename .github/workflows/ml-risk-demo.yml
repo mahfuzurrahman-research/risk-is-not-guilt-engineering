@@ -20,7 +20,9 @@ jobs:
       - name: Install pinned dependencies
         run: python -m pip install -r requirements-ml.txt
       - name: Run both modules and verify artifacts
-        run: ./run_all_demos.sh
+        run: |
+          ./run_public_demo.sh
+          ./run_ml_demo.sh
       - name: Build ML container
         run: docker build -f Dockerfile.ml -t risk-is-not-guilt-ml-demo .
       - name: Run ML container
